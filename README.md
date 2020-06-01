@@ -1,8 +1,8 @@
 # PrizmCore - heart of PRIZM project.
 
-## PRIZM Whitepaper ([en](http://tech.prizm.space/wp/prizm_wp_en.pdf?rnd=2019091101), [ru](http://tech.prizm.space/wp/prizm_wp_ru.pdf?rnd=2019091101), [de](http://tech.prizm.space/wp/prizm_wp_de.pdf?rnd=2019091101), [es](http://tech.prizm.space/wp/prizm_wp_es.pdf?rnd=2019091101), [it](http://tech.prizm.space/wp/prizm_wp_it.pdf?rnd=2019091101), [zh](http://tech.prizm.space/wp/prizm_wp_zh.pdf?rnd=2019091101), [hi](http://tech.prizm.space/wp/prizm_wp_hi.pdf?rnd=2019091101))
+## PRIZM Whitepaper ([en](http://tech.prizm.space/wp/prizm_wp_en.pdf?rnd=20200601), [ru](http://tech.prizm.space/wp/prizm_wp_ru.pdf?rnd=20200601), [zh](http://tech.prizm.space/wp/prizm_wp_zh.pdf?rnd=20200601), [el](http://tech.prizm.space/wp/prizm_wp_el.pdf?rnd=20200601), [id](http://tech.prizm.space/wp/prizm_wp_id.pdf?rnd=20200601))
 
-## PrizmCore wallet download (v.1.10.4.2: [Windows](http://tech.prizm.space/files/prizm-dist-1.10.4.2-win.exe), [OS/X](http://tech.prizm.space/files/prizm-dist-1.10.4.2-mac.dmg), [Linux](http://tech.prizm.space/files/prizm-dist-1.10.4.2-linux.tgz))
+## PrizmCore wallet download (v.1.10.4.3: [Windows](http://tech.prizm.space/files/prizm-dist-1.10.4.3-win.exe), [OS/X](http://tech.prizm.space/files/prizm-dist-1.10.4.3-mac.dmg), [Linux](http://tech.prizm.space/files/prizm-dist-1.10.4.3-linux.tgz))
 
 ## This is [Android Application](http://tech.prizm.space/files/prizm.apk)
 
