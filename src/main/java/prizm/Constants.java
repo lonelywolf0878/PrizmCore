@@ -96,6 +96,9 @@ public final class Constants {
 
     public static final boolean correctInvalidFees = Prizm.getBooleanProperty("prizm.correctInvalidFees");
 
+    public static final int maxBlockchainHeight = Prizm.getIntProperty("prizm.maxBlockchainHeight");
+    public static final boolean limitBlockchainHeight = maxBlockchainHeight > 0;
+
     // --------[INIT #A]-------
     public static final long EPOCH_BEGINNING;
 
@@ -133,7 +136,9 @@ public final class Constants {
     */
     public static final int ADVANCED_MESSAGING_VALIDATION = 100000;   // Should be OK
 
-    // TODO can be safely deleted with a small rework
+    // From this height we do not support aliases any more
+    public static final int LAST_ALIASES_BLOCK = 373000;
+
     public static final int CONTROL_TRX_TO_ORDINARY = 1500;     // allow only payments and messages
     public static final int FEE_MAX_10 = 1440;                  // Limit fee by 10 PZM (1000 cents)
 	public static final int THIEF_BLOCK_BEGIN = 52573;

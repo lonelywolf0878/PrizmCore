@@ -215,6 +215,17 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
                     if (!getMoreBlocks) {
                         return;
                     }
+                    if (Constants.limitBlockchainHeight) {
+                        if (blockchain.getHeight() >= Constants.maxBlockchainHeight) {
+                            getMoreBlocks = false;
+                            isDownloading = false;
+                            if (blockchain.getHeight() > Constants.maxBlockchainHeight)
+                                Logger.logErrorMessage("Blockchain height "+blockchain.getHeight()+" is higher then the prizm.maxBlockchainHeight "+Constants.maxBlockchainHeight+" in configuration file. Blockchain download  stopped.");
+                            else
+                                Logger.logWarningMessage("Reached max blockchain height: " + Constants.maxBlockchainHeight);
+                            return;
+                        }
+                    }
                     int chainHeight = blockchain.getHeight();
                     downloadPeer();
                     if (blockchain.getHeight() == chainHeight) {
@@ -593,18 +604,9 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
                         break;
                     }
                     BlockImpl block = peerBlock.getBlock();
-//stable trx                    
-                    block.getTransactions().forEach((transaction) -> {
-                        if (transaction.getType().getType() > 1 && BlockchainImpl.getInstance().getHeight() > Constants.CONTROL_TRX_TO_ORDINARY) {
-                            peerBlock.getPeer().blacklist("not valid block");
-                            popOffTo(BlockchainImpl.getInstance().getHeight() - 1);
-                            return;
-                        }
-                    });   
-//stable trx                    
                     if (blockchain.getLastBlock().getId() == block.getPreviousBlockId()) {
                         try {
-                            // Блоки от пиров.
+                            // Peer blocks
                             pushBlock(block);
                         } catch (BlockNotAcceptedException e) {
                             peerBlock.getPeer().blacklist(e);
@@ -1210,18 +1212,9 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
     public void processPeerBlock(JSONObject request) throws PrizmException {
         BlockImpl block = BlockImpl.parseBlock(request);
         if (block.getTransactions().size() > Constants.MAX_NUMBER_OF_TRANSACTIONS) {
-//System.out.println("blprimpl 1242 processPeerBlock trx > 800");
+            Logger.logWarningMessage("Refused block " + block.getId() + ", because it contains too many transactions");
             return;
         }
-// stable trx1        
-        block.getTransactions().forEach((transaction) -> {
-            if (transaction.getType().getType() > 1 && BlockchainImpl.getInstance().getHeight() > Constants.CONTROL_TRX_TO_ORDINARY) {
-                System.out.println("process block not accepted trx not valid type");
-                popOffTo(BlockchainImpl.getInstance().getHeight() - 1);
-                return;
-            }
-        });
-// stable trx1
         BlockImpl lastBlock = blockchain.getLastBlock();
         if (block.getPreviousBlockId() == lastBlock.getId()) {
             pushBlock(block);
@@ -1461,15 +1454,10 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
     }
 
     private void pushBlock(final BlockImpl block) throws BlockNotAcceptedException {
-// stable trx2        
-        block.getTransactions().forEach((transaction) -> {
-            if (transaction.getType().getType() > 1 && BlockchainImpl.getInstance().getHeight() > Constants.CONTROL_TRX_TO_ORDINARY) {
-                System.out.println("push block not accepted - invalid transaction type!");
-                popOffTo(BlockchainImpl.getInstance().getHeight() - 1);
-                return;
-            }
-        });
-// stable trx2        
+
+        if (Constants.limitBlockchainHeight && Constants.maxBlockchainHeight == blockchain.getHeight())
+            throw new BlockNotAcceptedException("Reached max allowed height " + blockchain.getHeight(), block);
+
         int curTime = Prizm.getEpochTime();
         
         blockchain.writeLock();
@@ -1714,9 +1702,9 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
                 for (DerivedDbTable table : derivedTables) {
                     table.rollback(commonBlock.getHeight());
                 }
-Logger.logDebugMessage("Rollback from PARA block " + block.getStringId() + " at height " + block.getHeight()
+                Logger.logDebugMessage("Rollback from PARA block " + block.getStringId() + " at height " + block.getHeight()
                         + " to " + commonBlock.getStringId() + " at " + commonBlock.getHeight());
-Prizm.para().rollbackToBlock(commonBlock.getHeight());                
+                Prizm.para().rollbackToBlock(commonBlock.getHeight());
                 Db.db.clearCache();
                 Db.db.commitTransaction();
             } catch (RuntimeException e) {
@@ -1725,8 +1713,8 @@ Prizm.para().rollbackToBlock(commonBlock.getHeight());
                 BlockImpl lastBlock = BlockDb.findLastBlock();
                 blockchain.setLastBlock(lastBlock);
                 popOffTo(lastBlock);
-Logger.logDebugMessage("Rollback from PARA of popOff block " + lastBlock.getHeight());                
-Prizm.para().rollbackToBlock(lastBlock.getHeight());                
+                Logger.logDebugMessage("Rollback from PARA of popOff block " + lastBlock.getHeight());
+                Prizm.para().rollbackToBlock(lastBlock.getHeight());
                 throw e;
             }
             return poppedOffBlocks;
