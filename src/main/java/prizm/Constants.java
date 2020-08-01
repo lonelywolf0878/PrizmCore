@@ -122,6 +122,7 @@ public final class Constants {
     public static final String IN_BLOCK_ID = "inblockID";
     public static final String IN_BLOCK_HEIGHT = "inblockHeight";
     public static final String IN_TRANSACT_ID = "inTransactId";
+    public static final String PARA_TAX = "paraTax";
     public static final String RANDOM = "random";
 
     // At this height we allow to INCREASE numberOfForkConfirmations MANUALLY inside prizm.properties to value higher then 1
@@ -137,12 +138,25 @@ public final class Constants {
     public static final int ADVANCED_MESSAGING_VALIDATION = 100000;   // Should be OK
 
     // From this height we do not support aliases any more
-    public static final int LAST_ALIASES_BLOCK = 373000;
+    public static final int LAST_ALIASES_BLOCK = 378000;
 
     public static final int CONTROL_TRX_TO_ORDINARY = 1500;     // allow only payments and messages
     public static final int FEE_MAX_10 = 1440;                  // Limit fee by 10 PZM (1000 cents)
 	public static final int THIEF_BLOCK_BEGIN = 52573;
     public static final int CURRENT_BLOCK_VERSION = 3;
         
-    public static final String GENESIS_SECRET_PHRASE = "132471795724474602596090885447809734073440405690173336453401505030282785124554759405469934798178728031618033988749894848204586834365638117720309179805762862135448622705260462818902449707207204189391137431415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";    
+    public static final String GENESIS_SECRET_PHRASE = "13247179572447460259609"
+            + "0885447809734073440405690173336453401505030282785124554759405469"
+            + "9347981787280316180339887498948482045868343656381177203091798057"
+            + "6286213544862270526046281890244970720720418939113743141592653589"
+            + "7932384626433832795028841971693993751058209749445923078164062862"
+            + "089986280348253421170679";
+
+    // Checksums to remove fork at <>
+    public static final int CHECKSUM_BLOCK_0 = isTestnet ? 373700 : 373700; //!isTestnet ? 484000 : 622000; // startuet so vtorogo raza
+    public static final int CHECKSUM_BLOCK_1 = isTestnet ? 374001 : 374001; //!isTestnet ? 484000 : 622000; // startuet so vtorogo raza
+    public static final int CHECKSUM_BLOCK_2 = isTestnet ? 374300 : 374300; //!isTestnet ? 664000 : 729700;
+    
+    public static final int BEGIN_BLOCK_TIMESTAMP_CALCULATION = 546730;
+    public static final int BEGIN_BLOCK_WITH_PARATAX = 571800;
 }

@@ -70,91 +70,20 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
             : new byte[]{
                 -29, -80, -60, 66, -104, -4, 28, 20, -102, -5, -12, -56, -103, 111, -71, 36, 39, -82, 65, -28, 100, -101, -109, 76, -92, -107, -103, 27, 120, 82, -72, 85
             };
-    private static final byte[] CHECKSUM_NQT_BLOCK = Constants.isTestnet
+    private static final byte[] CHECKSUM_1 = Constants.isTestnet
             ? new byte[]{
                 0
             }
             : new byte[]{
-                -29, -80, -60, 66, -104, -4, 28, 20, -102, -5, -12, -56, -103, 111, -71, 36, 39, -82, 65, -28, 100, -101, -109, 76, -92, -107, -103, 27, 120, 82, -72, 85
+                -51, -47, -127, -36, 65, -8, 66, -9, -89, 24, 16, -109, 36, 63, 76, -75, 3, -101, 30, -23, 53, -119, -39, -56, 99, 100, -70, 106, -87, 99, 110, -65
             };
-    private static final byte[] CHECKSUM_MONETARY_SYSTEM_BLOCK = Constants.isTestnet
+    private static final byte[] CHECKSUM_2 = Constants.isTestnet
             ? new byte[]{
                 0
             }
             : new byte[]{
-                91, -56, 10, 24, 104, -116, -99, -107, 10, 69, 104, 63, 69, 6, 95, -17, 102, 54, 33, -52, 115, 43, -64, -92, 79, -46, 112, 102, -28, 119, -34, -119
+                99, 44, -128, 91, 57, -88, -30, -9, 103, -46, 73, 100, 76, 12, -21, 40, -109, 83, 101, 31, -34, 4, 117, -13, -108, -56, 0, -19, -52, 105, -10, -68
             };
-    private static final byte[] CHECKSUM_PHASING_BLOCK = Constants.isTestnet
-            ? new byte[]{
-                0
-            }
-            : new byte[]{
-                -37, 124, -86, -66, -4, -98, -77, 57, -84, -18, -41, 57, -82, 110, 97, 20, -30, -87, -59, 55, -24, 71, 69, -29, -77, 89, 28, -128, 77, -36, 31, 30
-            };
-    private static final byte[] CHECKSUM_16 = Constants.isTestnet
-            ? new byte[]{
-                0
-            }
-            : new byte[]{
-                -40, -12, -3, -100, -98, 115, 87, -78, 28, 38, 62, 53, 103, 11, -55, 97, 45, -1, -79, -8, -128, -15, 10, -13, 94, 95, -125, -106, -34, -67, 15, 76
-            };
-    private static final byte[] CHECKSUM_17 = Constants.isTestnet
-            ? new byte[]{
-                0
-            }
-            : new byte[]{
-                49, 0, -22, -25, 103, -21, -3, -112, 106, -97, 79, -46, 23, -119, -53, 66, -89, 40, 2, -75, 102, 34, 16, 44, 111, 113, 69, -102, -62, 16, -127, 87
-            };
-    private static final byte[] CHECKSUM_18 = Constants.isTestnet
-            ? new byte[]{
-                0
-            }
-            : new byte[]{
-                32, 60, 29, -101, -42, 99, -128, 69, -32, -22, -104, -99, -35, -89, 106, -76, 70, -34, -73, 42, -106, 102, 111, -119, -41, 60, 55, -101, 57, -5, 107, 20
-            };
-    private static final byte[] CHECKSUM_19 = Constants.isTestnet
-            ? new byte[]{
-                0
-            }
-            : new byte[]{
-                32, 60, 29, -101, -42, 99, -128, 69, -32, -22, -104, -99, -35, -89, 106, -76, 70, -34, -73, 42, -106, 102, 111, -119, -41, 60, 55, -101, 57, -5, 107, 20
-            };
-    private static final byte[] CHECKSUM_20 = Constants.isTestnet
-            ? new byte[] {
-                0
-            }
-            :
-            new byte[] {
-                    -31, 16, 18, -38, -86, 3, -111, -9, 3, -32, 87, 8, 70, 35, -33, -56, 91,
-                    -72, -55, -96, -120, -127, -116, 2, -21, -89, -7, 56, -114, -66, 72, -49
-            };
-    private static final byte[] CHECKSUM_21 = Constants.isTestnet
-            ? new byte[] {
-                    0
-            }
-            :
-            new byte[] {
-                    -26, -121, -115, -116, -62, -120, -99, -74, -52, -39, 9, 52, 20, 92, -42, 115,
-                    19, -67, 7, 51, 4, -100, -41, 41, 57, -102, 19, -128, -109, -52, -68, -15
-            };
-    private static final byte[] CHECKSUM_22 = Constants.isTestnet
-            ? new byte[] {
-                    0
-            }
-            :
-            new byte[] {
-                    -77, 16, -52, 88, -21, -67, -119, 121, 121, 120, -70, 88, 44, -99, -9,
-                    -42, 48, -77, 28, 40, 106, -48, 13, 30, -22, -122, 35, 22, 29, 2, -93, 94
-            };
-    private static final byte[] CHECKSUM_23 = Constants.isTestnet
-            ? new byte[] {
-                    0
-            }
-            :
-            new byte[] {
-                    29, -13, -77, -107, -64, -81, -70, -19, -77, 11, 20, 119, -44, -61, -91, 51,
-                    83, 38, 127, 123, 103, 92, 7, 14, -108, 91, -70, -66, -48, -95, -110, -71
-    };
 
 
     private static final BlockchainProcessorImpl instance = new BlockchainProcessorImpl();
@@ -1008,6 +937,10 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
             }
         }
     }
+    
+    public static String fromByteArray(byte[] array) {
+        return Arrays.toString(array).replaceAll("\\[", "\\{").replaceAll("\\]", "\\}");
+    }    
 
     private final Listener<Block> checksumListener = block -> {
 //otlov cheksum
@@ -1020,6 +953,14 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
        if (block.getHeight() == Constants.TRANSPARENT_FORGING_BLOCK) {
             if (! verifyChecksum(CHECKSUM_TRANSPARENT_FORGING, 0, Constants.TRANSPARENT_FORGING_BLOCK)) {
                 popOffTo(0);
+            }
+       } else if (block.getHeight() == Constants.CHECKSUM_BLOCK_1) {
+            if (! verifyChecksum(CHECKSUM_1, Constants.CHECKSUM_BLOCK_0, Constants.CHECKSUM_BLOCK_1)) {
+                popOffTo(Constants.CHECKSUM_BLOCK_0);
+            }
+       } else if (block.getHeight() == Constants.CHECKSUM_BLOCK_2) {
+            if (! verifyChecksum(CHECKSUM_2, Constants.CHECKSUM_BLOCK_1, Constants.CHECKSUM_BLOCK_2)) {
+                popOffTo(Constants.CHECKSUM_BLOCK_1);
             }
         }  // TODO add checksums later
 //        else if (block.getHeight() == Constants.CHECKSUM_BLOCK_16) {
@@ -1693,6 +1634,11 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
             try {
                 BlockImpl block = blockchain.getLastBlock();
                 block.loadTransactions();
+
+                Logger.logDebugMessage("Rollback from PARA block " + block.getStringId() + " at height " + block.getHeight()
+                        + " to " + commonBlock.getStringId() + " at " + commonBlock.getHeight());
+                Prizm.para().rollbackToBlock(commonBlock.getHeight());
+
                 Logger.logDebugMessage("Rollback from block " + block.getStringId() + " at height " + block.getHeight()
                         + " to " + commonBlock.getStringId() + " at " + commonBlock.getHeight());
                 while (block.getId() != commonBlock.getId() && block.getId() != Genesis.GENESIS_BLOCK_ID) {
@@ -1702,9 +1648,6 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
                 for (DerivedDbTable table : derivedTables) {
                     table.rollback(commonBlock.getHeight());
                 }
-                Logger.logDebugMessage("Rollback from PARA block " + block.getStringId() + " at height " + block.getHeight()
-                        + " to " + commonBlock.getStringId() + " at " + commonBlock.getHeight());
-                Prizm.para().rollbackToBlock(commonBlock.getHeight());
                 Db.db.clearCache();
                 Db.db.commitTransaction();
             } catch (RuntimeException e) {
@@ -1728,6 +1671,7 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
         if (block.getId() == Genesis.GENESIS_BLOCK_ID) {
             throw new RuntimeException("Cannot pop off genesis block");
         }
+        Prizm.para().popLastBlock();
         BlockImpl previousBlock = BlockDb.deleteBlocksFrom(block.getId());
         previousBlock.loadTransactions();
         blockchain.setLastBlock(previousBlock);
@@ -1779,7 +1723,7 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
             Logger.logMessage("Checksum calculated:\n" + Arrays.toString(checksum));
             return true;
         } else if (!Arrays.equals(checksum, validChecksum)) {
-            Logger.logErrorMessage("Checksum failed at block " + blockchain.getHeight() + ": " + Arrays.toString(checksum));
+            Logger.logErrorMessage("Checksum failed at block " + blockchain.getHeight() + " : " + fromByteArray(checksum));
             return false;
         } else {
             Logger.logMessage("Checksum passed at block " + blockchain.getHeight());
@@ -2123,6 +2067,9 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
             JSONObject infoJSprism = new JSONObject();
             infoJSprism.put(Constants.IN_BLOCK_ID, payout.getBlockID());
             infoJSprism.put(Constants.IN_BLOCK_HEIGHT, payout.getHeight());
+            if (payout.getParaTax() > 0l) {
+                infoJSprism.put(Constants.PARA_TAX, payout.getParaTax());
+            }
             if (payout.getTxID() != null) {
                 infoJSprism.put(Constants.IN_TRANSACT_ID, payout.getTxID());
             }
