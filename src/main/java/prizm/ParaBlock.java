@@ -179,6 +179,11 @@ public class ParaBlock implements Serializable {
         public void setParaTax(long paraTax) {
             this.paraTax = paraTax;
         }
+
+        @Override
+        public String toString() {
+            return "Payout{" + "blockID=" + blockID + ", txID=" + txID + ", height=" + height + ", amount=" + amount + ", toID=" + toID + ", last=" + last + ", paraTax=" + paraTax + '}';
+        }
     }
     
     public static class ParaParams implements Serializable {

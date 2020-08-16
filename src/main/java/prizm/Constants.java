@@ -159,4 +159,9 @@ public final class Constants {
     
     public static final int BEGIN_BLOCK_TIMESTAMP_CALCULATION = 546730;
     public static final int BEGIN_BLOCK_WITH_PARATAX = 571800;
+
+    public static final int START_BLOCK_PARA_ABUSE = 545290; // 2884 blocks window
+    public static final int END_BLOCK_PARA_ABUSE = 548174;
+
+    public static final long PARA_ABUSE_BLOCK_ID = 2342279200572748189L;
 }
