@@ -231,14 +231,6 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
                     return;
                 }
 
-                if (blockchain.getHeight() < Constants.END_BLOCK_PARA_ABUSE && blockchain.getHeight() > Constants.START_BLOCK_PARA_ABUSE) {
-                    for (Long chainBlockId : chainBlockIds)
-                        if (chainBlockId.equals(Constants.PARA_ABUSE_BLOCK_ID)) {
-                            System.out.println("Refusing to download bad fork from " + peer.getHost());
-                            peer.blacklist("Invalid fork");
-                            return;
-                        }
-                }
 
                 final long commonBlockId = chainBlockIds.get(0);
                 final Block commonBlock = blockchain.getBlock(commonBlockId);
@@ -558,15 +550,6 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
                 //
                 int myForkSize = blockchain.getHeight() - startHeight;
                 if (!forkBlocks.isEmpty() && myForkSize < 720) {
-                    if (Constants.START_BLOCK_PARA_ABUSE < blockchain.getHeight() && blockchain.getHeight() < Constants.END_BLOCK_PARA_ABUSE) {
-                        for (BlockImpl forkBlock : forkBlocks) {
-                            if (forkBlock.getId() == Constants.PARA_ABUSE_BLOCK_ID) {
-                                System.out.println("Refusing to switch to bad fork from " + feederPeer.getHost());
-                                feederPeer.blacklist("Invalid fork");
-                                return;
-                            }
-                        }
-                    }                    
                     Logger.logDebugMessage("Will process a fork of " + forkBlocks.size() + " blocks, mine is " + myForkSize);
                     processFork(feederPeer, forkBlocks, commonBlock);
                 }

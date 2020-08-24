@@ -20,7 +20,13 @@ public class ParaMetrics implements Serializable {
         return ams;
     }
 
-    public static void setParataxPercent(ParaMetrics paraMetrics, long genesisAmount) {
+    public static void setParataxPercent(ParaMetrics paraMetrics, int height, long genesisAmount) {
+        if (height >= Constants.ENABLE_COMPOUND_AND_2X_PARATAX) {
+            long percent = getParataxPercent(genesisAmount) * 2;
+            if (percent > 99) percent = 99;
+            paraMetrics.setParaTax(percent);
+            return;
+        }
         paraMetrics.setParaTax(getParataxPercent(genesisAmount));
     }
 

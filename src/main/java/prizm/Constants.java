@@ -32,7 +32,14 @@ public final class Constants {
     public static final long MAX_BALANCE_PRIZM = 10000000L;
     public static final long ONE_PRIZM = 100;
     public static final long MAX_BALANCE_NQT = MAX_BALANCE_PRIZM * ONE_PRIZM;
-    public static final long INITIAL_BASE_TARGET = 15372286728L;
+    
+    private static final long INITIAL_BASE_TARGET = 15372286728L;
+    private static final int INITIAL_BASE_TARGET_FROM = 666000;
+    private static final int INITIAL_BASE_TARGET_TO_2 = 666666;
+    private static final long INITIAL_BASE_TARGET_2 = 153722867L;
+    
+    public static final int ENABLE_COMPOUND_AND_2X_PARATAX = 888888;
+    
     public static final long MAX_BASE_TARGET = MAX_BALANCE_PRIZM * INITIAL_BASE_TARGET;
     public static final long MAX_BASE_TARGET_2 = INITIAL_BASE_TARGET * 50;
     public static final long MIN_BASE_TARGET = INITIAL_BASE_TARGET  * 9 / 10;
@@ -159,9 +166,19 @@ public final class Constants {
     
     public static final int BEGIN_BLOCK_TIMESTAMP_CALCULATION = 546730;
     public static final int BEGIN_BLOCK_WITH_PARATAX = 571800;
+    // public static final int BEGIN_BLOCK_WITH_PARATAX = 547380;
 
-    public static final int START_BLOCK_PARA_ABUSE = 545290; // 2884 blocks window
-    public static final int END_BLOCK_PARA_ABUSE = 548174;
-
-    public static final long PARA_ABUSE_BLOCK_ID = 2342279200572748189L;
+    public static long getINITIAL_BASE_TARGET(int height) {
+        if (height > INITIAL_BASE_TARGET_TO_2) return INITIAL_BASE_TARGET_2;
+        if (height > INITIAL_BASE_TARGET_FROM && height <= INITIAL_BASE_TARGET_TO_2) {
+            int diffPercent =  (int)((height - INITIAL_BASE_TARGET_FROM)*100/(INITIAL_BASE_TARGET_TO_2 - INITIAL_BASE_TARGET_FROM));
+            long diff = INITIAL_BASE_TARGET - INITIAL_BASE_TARGET_2;
+            diffPercent = 100 - diffPercent;
+            if (diffPercent < 1) diffPercent = 1;
+            if (diffPercent > 100) diffPercent = 100;
+            long smackBASE = diffPercent * diff / 100;
+            return smackBASE;
+        }
+        return INITIAL_BASE_TARGET;
+    }    
 }
