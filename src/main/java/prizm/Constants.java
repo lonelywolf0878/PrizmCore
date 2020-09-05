@@ -170,15 +170,11 @@ public final class Constants {
 
     public static long getINITIAL_BASE_TARGET(int height) {
         if (height > INITIAL_BASE_TARGET_TO_2) return INITIAL_BASE_TARGET_2;
-        if (height > INITIAL_BASE_TARGET_FROM && height <= INITIAL_BASE_TARGET_TO_2) {
-            int diffPercent =  (int)((height - INITIAL_BASE_TARGET_FROM)*100/(INITIAL_BASE_TARGET_TO_2 - INITIAL_BASE_TARGET_FROM));
-            long diff = INITIAL_BASE_TARGET - INITIAL_BASE_TARGET_2;
-            diffPercent = 100 - diffPercent;
-            if (diffPercent < 1) diffPercent = 1;
-            if (diffPercent > 100) diffPercent = 100;
-            long smackBASE = diffPercent * diff / 100;
-            return smackBASE;
+        if (height > INITIAL_BASE_TARGET_FROM) {
+            long step = (INITIAL_BASE_TARGET - INITIAL_BASE_TARGET_2) / 666;
+            long stepsCount = height - INITIAL_BASE_TARGET_FROM;
+            return INITIAL_BASE_TARGET - (step * stepsCount);
         }
         return INITIAL_BASE_TARGET;
-    }    
+    }
 }
