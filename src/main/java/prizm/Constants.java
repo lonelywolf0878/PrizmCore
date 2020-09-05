@@ -41,8 +41,6 @@ public final class Constants {
     public static final int ENABLE_COMPOUND_AND_2X_PARATAX = 888888;
     
     public static final long MAX_BASE_TARGET = MAX_BALANCE_PRIZM * INITIAL_BASE_TARGET;
-    public static final long MAX_BASE_TARGET_2 = INITIAL_BASE_TARGET * 50;
-    public static final long MIN_BASE_TARGET = INITIAL_BASE_TARGET  * 9 / 10;
     public static final long MIN_FEE_NQT = 0L;
     public static final int MIN_BLOCKTIME_LIMIT = 50;
     public static final int MAX_BLOCKTIME_LIMIT = 70;
@@ -176,5 +174,13 @@ public final class Constants {
             return INITIAL_BASE_TARGET - (step * stepsCount);
         }
         return INITIAL_BASE_TARGET;
+    }
+
+    public static long getMaxBaseTarget(int height) {
+        return getINITIAL_BASE_TARGET(height) * 50;
+    }
+
+    public static long getMinBaseTarget(int height) {
+        return getINITIAL_BASE_TARGET(height)  * 9 / 10;
     }
 }
