@@ -1,4 +1,4 @@
-# PrizmCore - heart of PRIZM project.
+# PrizmCore - the heart of the PRIZM Project.
 
 ## PRIZM Whitepaper ([en](http://tech.prizm.space/wp/prizm_wp_en.pdf?rnd=20200601), [ru](http://tech.prizm.space/wp/prizm_wp_ru.pdf?rnd=20200601), [zh](http://tech.prizm.space/wp/prizm_wp_zh.pdf?rnd=20200601), [el](http://tech.prizm.space/wp/prizm_wp_el.pdf?rnd=20200601), [id](http://tech.prizm.space/wp/prizm_wp_id.pdf?rnd=20200601))
 
