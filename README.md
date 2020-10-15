@@ -9,7 +9,7 @@
 ## User friendly [Online Wallet](https://wallet.prizm.space/) ([Mirror](https://wallet.prizm-space.com/))
 ## TOR addresses ([TOR BROWSER](https://www.torproject.org) compatible): [walletyfy6bb3jzt2q3vtyl7jsguwsgn4citlv33ousnow2c3vaa3pyd.onion](http://walletyfy6bb3jzt2q3vtyl7jsguwsgn4citlv33ousnow2c3vaa3pyd.onion/), [prizmkxgbreudbpm.onion](http://prizmkxgbreudbpm.onion/)
 
-## [Windows and OS X client downloads](http://94.130.167.158/loyalty/center/)
+## [Windows and OS X client downloads](http://94.130.167.158/center/)
 
 ## Easy API gateway [PrizmAPIServlet 1.10.4](http://tech.prizm.space/files/prizm-api-1.10.4.tgz)
 
